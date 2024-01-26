@@ -4,26 +4,6 @@ server:
 spring:
   application:
     name: order-server
-#  rabbitmq:
-#    # 集群节点
-#    addresses: 192.168.126.147:5672,192.168.126.147:5673,192.168.126.147:5674
-#    username: guest
-#    password: guest
-#  datasource:  # 数据源的相关配置
-#    url: jdbc:mysql://192.168.126.147:3306/mysql?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-#    password: 123456
-#  redis:
-#    lettuce:
-#      pool:
-#        min-idle: 0
-#        max-idle: 8
-#        max-wait: -1ms
-#        max-active: 8
-#    sentinel:
-#      master: mymaster
-#      nodes: 192.168.126.146:26379,192.168.126.147:26379,192.168.126.148:26379
-
-
 eureka:
   client:
     #false表示不向注册中心注册自己。
