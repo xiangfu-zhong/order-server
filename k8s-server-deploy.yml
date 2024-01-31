@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: order
-          image: 192.168.126.146/repo/order-server:v1
+          image: 192.168.126.146:80/repo/order-server:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8082
