@@ -17,7 +17,7 @@ public class OrderTestContraller {
     public String order(String str){
         System.out.println("order方法调用成功！！！");
         //orderTestService.order(str);
-        return "success";
+        return "success1111";
     }
 
     @GetMapping("/circuitBreaker")
