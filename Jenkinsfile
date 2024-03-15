@@ -24,5 +24,14 @@ pipeline {
                 sh 'docker build -t order-server .'
             }
         }
+
+        stage('push image') {
+            steps {
+                echo 'push image'
+                sh '''docker login -u admin -p Harbor12345 192.168.126.146:80
+                docker tag order-server 192.168.126.146:80/repo/order-server:v1
+                docker push 192.168.126.146:80/repo/order-server:v1'''
+            }
+        }
     }
 }
