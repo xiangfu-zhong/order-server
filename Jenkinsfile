@@ -15,5 +15,13 @@ pipeline {
                 sh 'mvn clean package -Dmaven.test.skip=true'
             }
         }
+
+        stage('build image') {
+            steps {
+                echo 'build image'
+                sh 'mv ./target/*.jar .'
+                sh 'docker build -t order-server .'
+            }
+        }
     }
 }
