@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('check code') {
             steps {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'ac29986c-792e-475e-89e5-b86a772e269e', url: 'https://gitlab.com/zxf2/order-server.git']])
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '859973f1-c4e8-44e1-bfea-7bca90885112', url: 'https://gitlab.com/zxf2/order-server.git']])
             }
         }
 
