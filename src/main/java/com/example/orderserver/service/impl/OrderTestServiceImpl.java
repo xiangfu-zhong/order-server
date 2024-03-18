@@ -1,33 +1,32 @@
-//package com.example.orderserver.service.impl;
-//
-//import com.example.orderserver.feignClient.IProductFeignClient;
-//import com.example.orderserver.service.IOrderTestService;
-//import com.fasterxml.jackson.databind.introspect.TypeResolutionContext;
+package com.example.orderserver.service.impl;
+
+import com.example.orderserver.feignClient.IProductFeignClient;
+import com.example.orderserver.service.IOrderTestService;
+import com.fasterxml.jackson.databind.introspect.TypeResolutionContext;
 //import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 //import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 //import com.netflix.hystrix.contrib.javanica.conf.HystrixPropertiesManager;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//
-//@Service
-//public class OrderTestServiceImpl implements IOrderTestService {
-//
-//    @Autowired
-//    private IProductFeignClient productFeignClient;
-//
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderTestServiceImpl implements IOrderTestService {
+
+    @Autowired
+    private IProductFeignClient productFeignClient;
+
 //    @HystrixCommand(fallbackMethod = "orderFallback")
 //    @Override
 //    public void order(String str) {
-//        下单
 //        System.out.println("下单成功！");
 //        //扣减库存
 //        productFeignClient.updateStore("123");
 //        //throw new RuntimeException("模拟业务异常");
 //    }
-//
-//    /**
-//     * 标记当前方法开启服务降级
-//     */
+
+    /**
+     * 标记当前方法开启服务降级
+     */
 //    @HystrixCommand(
 //            commandProperties = {
 //                    // 启用熔断器
@@ -46,14 +45,22 @@
 //        //扣减库存
 //        productFeignClient.updateStore("123");
 //    }
-//
-//
-//    private void circuitBreakFallback(String orderNo){
-//        System.out.println("服务熔断，请稍后重试！！");
-//    }
-//
-//
-//    private void orderFallback(String str){
-//        System.out.println("服务降级，请稍后重试");
-//    }
-//}
+
+
+    private void circuitBreakFallback(String orderNo){
+        System.out.println("服务熔断，请稍后重试！！");
+    }
+
+
+    private void orderFallback(String str){
+        System.out.println("服务降级，请稍后重试");
+    }
+
+    public String order(String str) {
+        return productFeignClient.updateStore("123");
+    }
+
+    public void circuitBreaker(String orderNo) {
+
+    }
+}

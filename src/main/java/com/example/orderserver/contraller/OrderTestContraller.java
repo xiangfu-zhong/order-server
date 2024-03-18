@@ -7,17 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/orderTestContraller")
+@RequestMapping("/order/orderTestContraller")
 public class OrderTestContraller {
 
-    //@Autowired
-    //private IOrderTestService orderTestService;
+    @Autowired
+    private IOrderTestService orderTestService;
 
     @GetMapping("/order")
     public String order(String str){
         System.out.println("order方法调用成功！！！");
-        //orderTestService.order(str);
-        return "success1111";
+        return orderTestService.order(str);
     }
 
     @GetMapping("/circuitBreaker")
