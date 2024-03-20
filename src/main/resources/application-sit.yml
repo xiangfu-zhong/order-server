@@ -5,4 +5,4 @@ eureka:
     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-0.eureka:8761/eureka/,http://eureka-1.eureka:8761/eureka/,http://eureka-2.eureka:8761/eureka/
+      defaultZone: http://eureka-0.eureka.test.svc.cluster.local:8761/eureka/,http://eureka-1.eureka.test.svc.cluster.local:8761/eureka/,http://eureka-2.eureka.test.svc.cluster.local:8761/eureka/

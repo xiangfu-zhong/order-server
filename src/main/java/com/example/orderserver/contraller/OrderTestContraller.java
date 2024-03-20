@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/order/orderTestContraller")
+@RequestMapping("/orderTestContraller")
 public class OrderTestContraller {
 
     @Autowired
@@ -20,7 +20,7 @@ public class OrderTestContraller {
     }
 
     @GetMapping("/circuitBreaker")
-    public String circuitBreaker(String orderNo){
+    public String circuitBreaker(){
         //orderTestService.circuitBreaker(orderNo);
         return "success";
     }
