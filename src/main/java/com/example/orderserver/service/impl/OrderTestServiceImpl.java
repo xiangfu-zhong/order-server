@@ -6,11 +6,17 @@ import com.fasterxml.jackson.databind.introspect.TypeResolutionContext;
 //import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 //import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 //import com.netflix.hystrix.contrib.javanica.conf.HystrixPropertiesManager;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class OrderTestServiceImpl implements IOrderTestService {
+
+    private static Log log= LogFactory.getLog(OrderTestServiceImpl.class);
 
     @Autowired
     private IProductFeignClient productFeignClient;
@@ -57,6 +63,7 @@ public class OrderTestServiceImpl implements IOrderTestService {
     }
 
     public String order(String str) {
+        log.info("recive order request！！！");
         return productFeignClient.updateStore("123");
     }
 

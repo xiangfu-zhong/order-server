@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@FeignClient(name="PRODUCT-SERVER")
+@FeignClient(name="product-server",url = "http://product:8082")
 public interface IProductFeignClient {
 
     @GetMapping("/productTestContraller/updateStore")
