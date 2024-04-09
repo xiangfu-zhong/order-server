@@ -16,28 +16,31 @@ pipeline {
             }
         }
 
-//         stage('build image') {
-//             steps {
-//                 echo 'build image'
-//                 sh 'mv ./target/*.jar .'
-//                 sh 'docker build -t order-server .'
-//             }
-//         }
+        stage('build image') {
+            steps {
+                echo 'build image'
+                sh 'mv ./target/*.jar .'
+                sh 'docker build -t order-server .'
+            }
+        }
 
-//         stage('push image') {
-//             steps {
-//                 echo 'push image'
-//                 sh '''docker login -u admin -p Harbor12345 192.168.126.146:80
-//                 docker tag order-server 192.168.126.146:80/repo/order:v1.0.0
-//                 docker push 192.168.126.146:80/repo/order:v1.0.0'''
-//             }
-//         }
+        stage('push image') {
+            steps {
+                echo 'push image'
+                sh '''docker login -u admin -p Harbor12345 192.168.126.146:80
+                docker tag order-server 192.168.126.146:80/repo/order:v1.0.0
+                docker push 192.168.126.146:80/repo/order:v1.0.0'''
+            }
+        }
 
         stage('deploy') {
             steps {
                 echo 'deploy'
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'k8s', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'k8s-order.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-                sh 'ssh -tt root@192.168.126.147'
+                sh '''ssh root@192.168.126.147
+                kubectl delete -f k8s-order.yml
+                kubectl apply -f k8s-order.yml
+                kubectl rollout restart deployment order -n test'''
             }
         }
     }
