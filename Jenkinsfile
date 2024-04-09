@@ -16,13 +16,13 @@ pipeline {
             }
         }
 
-        stage('build image') {
-            steps {
-                echo 'build image'
-                sh 'mv ./target/*.jar .'
-                sh 'docker build -t order-server .'
-            }
-        }
+//         stage('build image') {
+//             steps {
+//                 echo 'build image'
+//                 sh 'mv ./target/*.jar .'
+//                 sh 'docker build -t order-server .'
+//             }
+//         }
 
 //         stage('push image') {
 //             steps {
