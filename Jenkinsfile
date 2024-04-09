@@ -38,9 +38,7 @@ pipeline {
                 echo 'deploy'
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'k8s', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'k8s-order.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                 sh '''ssh -tt root@192.168.126.147
-                kubectl delete -f k8s-order.yml
-                kubectl apply -f k8s-order.yml
-                kubectl rollout restart deployment order -n test'''
+                kubectl apply -f k8s-order.yml'''
             }
         }
     }
