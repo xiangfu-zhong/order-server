@@ -37,7 +37,7 @@ pipeline {
             steps {
                 echo 'deploy'
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'k8s', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'k8s-order.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-                sh 'ssh root@192.168.126.147'
+                sh 'ssh -tt root@192.168.126.147'
             }
         }
     }
